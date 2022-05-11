@@ -1,22 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const { getGoals } = require('../controllers/blogController')
+const { getBlogs, createBlog, updateBlog, deleteBlogs } = require('../controllers/blogController')
 
-router.get("/", (req, res) => {
-    res.status(200).json({ message: "Get Blogs" });
-  });
+router.get("/", getBlogs);
 
-  router.post("/", (req, res) => {
-    res.status(200).json({ message: "Create Blog" });
-  });
 
-  router.put("/:id", (req, res) => {
-    res.status(200).json({ message: `Update Blog ${req.params.id}` });
-  });
+  router.post("/", createBlog);
 
-  router.delete("/:id", (req, res) => {
-    res.status(200).json({ message: `Delete Blog ${req.params.id}` });
-  });
+
+  router.put("/:id", updateBlog)
+
+  router.delete("/:id", deleteBlogs);
 
 
 

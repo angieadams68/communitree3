@@ -3,14 +3,14 @@ const getBlogs = (req, res) => {
 };
 
 const createBlog = (req, res) => {
-    res.status(200).json({ message: "Create Blogs " });
+    res.status(200).json({ message: "Create Blog " });
   };
 
   const updateBlog = (req, res) => {
     res.status(200).json({ message: `Update Blog ${req.params.id}` });
   };
 
-  const deleteBlogs = (req, res) => {
+  const deleteBlog = (req, res) => {
     res.status(200).json({ message: `Delete Blog ${req.params.id}` });
   };
 
@@ -25,5 +25,5 @@ module.exports = {
     getBlogs,
     createBlog,
     updateBlog,
-    deleteBlogs
+    deleteBlog
 }

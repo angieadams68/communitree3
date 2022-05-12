@@ -1,26 +1,32 @@
-const mongoose = require('mongoose')
+//// CREATING A USER ////
 
- const userSchema = mongoose.Schema({
+const mongoose = require("mongoose");
+
+const userSchema = mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: [true, 'Please enter your Name']
+      type: String,
+      required: [true, "Please enter your Name"],
     },
     email: {
-        type: String,
-        required: [true, 'Please enter your Email'],
-        unique: true
+      type: String,
+      required: [true, "Please enter your Email"],
+      unique: true,
     },
     password: {
-        type: String,
-        required: [true, 'Please enter a Password'],
-        unique: true
+      type: String,
+      required: [true, "Please enter a Password"],
+      unique: true,
     },
     username: {
-        type: String,
-        required: [true, 'Please enter a Username'],
-        unique: true
+      type: String,
+      required: [true, "Please enter a Username"],
+      unique: true,
     },
-},
-{
-    timestamps: true
-})
+  },
+  {
+    timestamps: true,
+  }
+);
+
+module.exports = mongoose.model("User", userSchema);

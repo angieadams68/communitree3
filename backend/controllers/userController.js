@@ -39,13 +39,15 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       username: user.username,
-      token: generateToken(user._id)
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
     throw new Error("Invalid user data Information");
   }
 });
+
+//// AUTHENTICATE A USER ////
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -59,7 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       username: user.username,
-      token: generateToken(user._id)
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -67,9 +69,11 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+////// GETTING USERS DATA //////
+
 const getMe = asyncHandler(async (req, res) => {
-  res.status(200).json(req.user)
-})
+  res.status(200).json(req.user);
+});
 
 //// GENERATE JWT ////
 const generateToken = (id) => {
@@ -83,4 +87,3 @@ module.exports = {
   loginUser,
   getMe,
 };
-

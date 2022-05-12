@@ -1,4 +1,4 @@
-//// CREATING A USER ////
+
 
 const mongoose = require("mongoose");
 

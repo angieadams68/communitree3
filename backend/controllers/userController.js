@@ -63,20 +63,13 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid credentials");
+    throw new Error("Invalid field");
   }
 });
 
 const getMe = asyncHandler(async (req, res) => {
-  const {_id, name, email, username} = await User.findById(req.user.id)
-
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-    username,
-  })
-});
+  res.status(200).json(req.user)
+})
 
 //// GENERATE JWT ////
 const generateToken = (id) => {
@@ -91,6 +84,3 @@ module.exports = {
   getMe,
 };
 
-module.exports = {
-  registerUser,
-};

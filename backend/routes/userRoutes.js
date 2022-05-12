@@ -6,7 +6,7 @@ const { registerUser,  loginUser, getMe, } = require('../controllers/userControl
 
 
 router.post('/', registerUser)
-router.post('/login', loginUser)
+router.get('/login', loginUser)
 router.get('/me', getMe)
 
 

@@ -5,11 +5,12 @@ const dotenv = require("dotenv").config();
 const {errorHandler} = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
 
+connectDB()
 
 /////// DEFINE VARIABLES ////////
 const port = process.env.PORT || 5001;
 const app = express();
-connectDB()
+
 
 //////// MIDDLEWARE ////////
 

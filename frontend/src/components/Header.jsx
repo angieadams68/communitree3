@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
+    
     <header className="Header">
       <div className="logo">
         <Link to="/">Blog</Link>
       </div>
       <ul>
-          
         <li>
           <Link to="/login">
             <FaSignInAlt /> Login

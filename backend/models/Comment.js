@@ -1,8 +1,8 @@
-//// ADDING A BLOG ////
+//// ADDING A COMMENT ////
 
 const mongoose = require("mongoose");
 
-const blogSchema = mongoose.Schema(
+const commentSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -19,4 +19,4 @@ const blogSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Blog", blogSchema);
+module.exports = mongoose.model("Comment", commentSchema);

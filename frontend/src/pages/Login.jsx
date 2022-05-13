@@ -1,15 +1,73 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
+import {FaSignInAlt} from 'react-icons/fa'
+
+
+//////////// COMPONENT FUNCTION ////////////////
 
 function Login() {
-  return (
-    <div>Login</div>
-  )
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+      })
+
+ const { username, password } = formData
+
+ ///////////// DATA CHANGES /////////////////
+ const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+ const onSubmit = (e) => {
+     e.preventDefault()
+ }
+
+  return <>
+  <section className='Reg'>
+      <h1>
+<FaSignInAlt /> Login
+      </h1>
+      <p className='captionlogin'> SO excited to see you again!</p>
+  </section>
+   
+  <section className='form'>
+        <form onSubmit={onSubmit}>
+          <div className='form-group'>
+            <input
+              type='username'
+              className='form-control'
+              id='username'
+              name='username'
+              value={username}
+              placeholder='Enter your Username'
+              onChange={onChange}
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              type='password'
+              className='form-control'
+              id='password'
+              name='password'
+              value={password}
+              placeholder='Enter password'
+              onChange={onChange}
+            />
+          </div>
+
+           <div className='form-group'>
+            <button type='submit' className='btn btn-block'>
+              Click Me! Welcome Back!
+            </button>
+            </div>
+       </form>
+   </section>
+  </>
 }
-
 export default Login
-
-
-
 
 
 

@@ -214,3 +214,13 @@ h3 {
   }
 }
 
+.captionlogin {
+  margin-left: 40%;
+  font-weight: bold;
+  font-size: larger;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.home {
+  font-family: 'Oleo Script Swash Caps', cursive;
+}

@@ -62,6 +62,17 @@ function Register() {
            </div>
            <div className='form-group'>
            <input 
+           type='text'
+           className='form-control'
+           id='username'
+           name='username'
+           value={username}
+           placeholder='Enter your Username'
+           onChange={onChange}
+           />
+           </div>
+           <div className='form-group'>
+           <input 
            type='password'
            className='form-control'
            id='password'
@@ -84,7 +95,7 @@ function Register() {
            </div>
            <div className='form-group'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              Click Me! Can't wait to see you around!
             </button>
             </div>
        </form>

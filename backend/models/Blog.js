@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose')
 
-const Post = new Schema(
+const Blog = new Schema(
   {
     title: { type: String, required: true },
     author: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -9,4 +9,4 @@ const Post = new Schema(
   { timestamps: true }
 )
 
-module.exports = Post
+module.exports = Blog

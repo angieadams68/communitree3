@@ -1,6 +1,6 @@
 
 
-const Post =  ({ Post,text, saveText }) => {
+const Post =  ({ createPost, text, saveText }) => {
     return(
         <div className="postContainer">
     <h2>Create A Post</h2>

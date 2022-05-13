@@ -221,6 +221,22 @@ h3 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.home {
-  font-family: 'Oleo Script Swash Caps', cursive;
+.logo {
+  margin-left: 20%;
+  align-items: center;
+}
+
+.Blog {
+  font-family: cursive;
+}
+
+
+.postBox {
+  display: grid;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid black;
+  grid-template-columns: 1fr 0.25fr;
+ 
+  
 }

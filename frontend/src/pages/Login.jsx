@@ -26,7 +26,7 @@ function Login() {
  }
 
   return <>
-  <section className='Reg'>
+  <section className='logo'>
       <h1>
 <FaSignInAlt /> Login
       </h1>

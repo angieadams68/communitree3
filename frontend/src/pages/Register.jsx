@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import {FaUser} from 'react-icons/fa'
 
 
+
 //////////// COMPONENT FUNCTION ////////////////
 
 function Register() {
@@ -29,7 +30,7 @@ function Register() {
  }
 
   return <>
-  <section className='Reg'>
+  <section className='logo'>
       <h1>
 <FaUser /> Register
       </h1>

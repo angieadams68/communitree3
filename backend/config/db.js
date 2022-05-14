@@ -9,6 +9,7 @@ const connectDB = async () => {
     console.log(error);
     process.exit(1);
   }
+  console.log(process.env.MONGO_URI)
 };
 
 module.exports = connectDB;

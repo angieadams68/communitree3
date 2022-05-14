@@ -2,11 +2,11 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Article from '../components/Article'
-import NewPost from '../components/NewPost'
-import SideBar from '../components/SideBar'
+import Blog from '../components/Blog'
 
 
-const Home = () => {
+
+const Feed = () => {
   const [blogPost, setBlogPost] = useState({
     title: '',
     author: '',
@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     const renderArticles = async () => {
-      let database = await axios.get('/allposts')
+      let database = await axios.get('/allblogs')
       console.log(database)
       setArticles(database.data)
     }
@@ -30,11 +30,11 @@ const Home = () => {
   }
 
   const saveContent = (e) => {
-    const newPost = {
+    const Blog = {
       ...blogPost,
       [e.target.name]: e.target.value
     }
-    setBlogPost(newPost)
+    setBlogPost(Blog)
   }
 
   const submitPost = async (e) => {
@@ -42,7 +42,7 @@ const Home = () => {
     await axios.post('/new', blogPost)
     setBlogPost({
       title: '',
-      author: '62420bcc70117cfd84d31f3a',
+      author: '',
       content: ''
     })
     navigate('/post/created')
@@ -50,9 +50,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <aside>
-        <SideBar createNew={createNew} clicked={clicked} />
-      </aside>
+      
       <main>
         {!clicked ? (
           !!articles.length &&
@@ -66,7 +64,7 @@ const Home = () => {
             />
           ))
         ) : (
-          <NewPost
+          <Blog
             blogPost={blogPost}
             saveContent={saveContent}
             submitPost={submitPost}
@@ -77,4 +75,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Feed

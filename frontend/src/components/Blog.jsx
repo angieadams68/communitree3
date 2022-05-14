@@ -18,7 +18,10 @@ const Blog = ({ createBlog, text, saveText, photo, savePhoto }) => {
           value={photo}
           onChange={savePhoto}
         />
-        <button className="postButton">Post</button>
+        <button className="Op">Create Post</button>
+        <button className="Op">Update Post</button>
+        <button className="Op">Delete Post</button>
+        <button className="Op">Post to Drafts</button>
       </form>
     </div>
   );

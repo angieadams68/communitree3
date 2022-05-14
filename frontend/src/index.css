@@ -20,6 +20,13 @@ p {
   line-height: 1.7;
 }
 
+.reg {
+  margin-left: 26%;
+  font-weight: bold;
+  font-size: larger;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 ul {
   list-style: none;
 }
@@ -28,11 +35,14 @@ li {
   line-height: 2.2;
 }
 
-h1,
 h2,
 h3 {
   font-weight: 600;
   margin-bottom: 10px;
+}
+
+h1 {
+  margin-left: 32%;
 }
 
 .container {
@@ -215,7 +225,7 @@ h3 {
 }
 
 .captionlogin {
-  margin-left: 40%;
+  margin-left: 26%;
   font-weight: bold;
   font-size: larger;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -239,4 +249,9 @@ h3 {
   grid-template-columns: 1fr 0.25fr;
  
   
+}
+
+.homeImg {
+  background-size: cover;
+  background-repeat: no-repeat;
 }

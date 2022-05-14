@@ -6,6 +6,7 @@ import {
   FaHome,
   FaBook,
   FaTree,
+  FaLayerGroup
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -35,6 +36,12 @@ function Header() {
         <li>
           <Link to="/about">
             <FaTree /> About Us
+          </Link>
+        </li>
+        <li>
+          <Link to="/feed">
+            <FaLayerGroup /> Feed
+
           </Link>
         </li>
       </ul>

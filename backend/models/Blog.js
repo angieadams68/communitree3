@@ -9,4 +9,4 @@ const Blog = new Schema(
   { timestamps: true }
 )
 
-module.exports = Blog
+module.exports = mongoose.model("Blog", blogSchema);

@@ -13,6 +13,7 @@ const commentSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add text to your post"],
     },
+    review: { type: String, required: true },
   },
   {
     timestamps: true,

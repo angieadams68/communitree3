@@ -34,7 +34,7 @@ function Register() {
       <h1>
 <FaUser /> Register
       </h1>
-      <p> Ready to join us? Register here! </p>
+      <p className='reg'> Ready to join us? Register here! </p>
   </section>
    
    <section className='Form'>

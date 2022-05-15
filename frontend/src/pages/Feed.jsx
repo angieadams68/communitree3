@@ -45,7 +45,7 @@ const Feed = () => {
       author: '',
       content: ''
     })
-    navigate('/post/created')
+    navigate('/post/your')
   }
 
   return (

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
+
 const YourPost = (props) => {
   let navigate = useNavigate()
   const handleDelete = async () => {
@@ -12,7 +13,7 @@ const YourPost = (props) => {
 
   return (
     <div className="Posts">
-      <article>
+    
         <header>
           <h3>{props.title}</h3>
           <p id="Author">Strong Parent:</p>
@@ -20,7 +21,7 @@ const YourPost = (props) => {
         <p>{props.content}</p>
         <Link to={`/edits/${props.objectID}`}>Edit</Link>
         <button onClick={handleDelete}>Delete</button>
-      </article>
+      
     </div>
   )
 }

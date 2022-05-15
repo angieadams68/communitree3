@@ -42,20 +42,20 @@ app.get("/api/blogs/:userId",getBlogs)
 
 //------------CREATE BLOGS----------------//
 
-app.post("/new", crudController.createBlog)
+app.post("/new",createBlog)
 // app.use('/api/users', require('./routes/userRoutes'))
 
 //------------POST BY ID----------------//
 
-app.get("/blog/:id", crudController.getBlogById)
+app.get("/blog/:id", getBlogById)
 
 //------------UPDATE BLOGS----------------//
 
-app.put('/posts/:id', crudController.updateBlog)
+app.put('/posts/:id', updateBlog)
 
 //------------DELETE BLOGS----------------//
 
-app.delete('/delete/posts/:id', crudController.deleteBlog)
+app.delete('/delete/posts/:id',deleteBlog)
 
 //////// PORT LISTENING ////////
 app.listen(port, () => console.log(`Server started on port ${port}`));

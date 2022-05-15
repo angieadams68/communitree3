@@ -1,5 +1,7 @@
 //////// IMPORT ////////
 const express = require("express");
+const cors = require('cors')
+const logger = require('morgan')
 const colors = require('colors')
 const dotenv = require("dotenv").config();
 const {errorHandler} = require('./middleware/errorMiddleware')
@@ -20,11 +22,17 @@ const app = express();
 //////// MIDDLEWARE ////////
 
 app.use(express.json())
+app.use(cors())
+app.use(logger('dev'))
 
 app.use(express.urlencoded({ extended: false }))
-app.get("/api/blogs/:userId",getBlogs)
+
+
 // app.use('/api/blogs', blog)
-app.use('/api/users', require('./routes/userRoutes'))
+app.get("/api/blogs/:userId",getBlogs)
+
+app.post("/")
+// app.use('/api/users', require('./routes/userRoutes'))
 
 app.use(errorHandler)
 

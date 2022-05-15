@@ -5,9 +5,9 @@ const logger = require('morgan')
 const colors = require('colors')
 const dotenv = require("dotenv").config();
 const {errorHandler} = require('./middleware/errorMiddleware')
-const connectDB = require('./config/db')
-const blog = require('./routes/blogRoutes')
-connectDB()
+const db = require('./db')
+const crudController = require('./controllers/crudController')
+
 const {
     getBlogs,
     createBlog,
@@ -27,15 +27,35 @@ app.use(logger('dev'))
 
 app.use(express.urlencoded({ extended: false }))
 
+app.use(errorHandler)
+
+
+
+////// ROUTES //////
+
+app.get('/allblogs', crudController.getBlogs)
+
+//------------GET BLOGS----------------//
 
 // app.use('/api/blogs', blog)
 app.get("/api/blogs/:userId",getBlogs)
 
-app.post("/")
+//------------CREATE BLOGS----------------//
+
+app.post("/new", crudController.createBlog)
 // app.use('/api/users', require('./routes/userRoutes'))
 
-app.use(errorHandler)
+//------------POST BY ID----------------//
 
+app.get("/blog/:id", crudController.getBlogById)
+
+//------------UPDATE BLOGS----------------//
+
+app.put('/posts/:id', crudController.updateBlog)
+
+//------------DELETE BLOGS----------------//
+
+app.delete('/delete/posts/:id', crudController.deleteBlog)
 
 //////// PORT LISTENING ////////
 app.listen(port, () => console.log(`Server started on port ${port}`));

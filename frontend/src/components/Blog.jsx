@@ -1,9 +1,7 @@
 const Blog = ({ createBlog, text, saveText, photo, savePhoto }) => {
   return (
     <div className="Blog">
-      <img 
-className='homeImg'
- />
+      
       <form onSubmit={createBlog} className="postBox">
         <textarea
         className="box"

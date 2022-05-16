@@ -229,16 +229,10 @@ h3 {
 } 
 
 
-/* LINKS ///
+/* LINKS */
 
-/* 
-.login {
-  margin-left: 96%;
-}
 
-.register {
-  margin-left: 81%;
-}  */
+
 
 .logo {
   position: absolute;
@@ -248,9 +242,12 @@ h3 {
 
 .log {
   margin-left: 20%;
+  padding: 2%;
 }
 
-
+.reg {
+  margin-left: 30%;
+}
 
 
 /* PAGE */
@@ -261,6 +258,14 @@ h3 {
 h1 {
   margin-left: 32%;
   margin-bottom: 30%;
+}
+
+.fo {
+  padding: 20%;
+}
+
+.fom {
+  padding: 20%;
 }
 
 

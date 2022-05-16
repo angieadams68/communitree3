@@ -31,13 +31,13 @@ function Register() {
 
   return <>
   <section className='logo'>
-      <h1>
+      <h1 className='fom'>
 <FaUser /> Register
       </h1>
       <p className='reg'> Ready to join us? Register here! </p>
   </section>
    
-   <section className='Form'>
+   <section className='fo'>
        <form onSubmit={onSubmit}>
            <div className='form-group'>
            <input 

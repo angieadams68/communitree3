@@ -27,9 +27,9 @@ function Login() {
 
   return <>
   <div className='pic'>
-  <img 
+  {/* <img 
 className='homeImg'
-src="https://i.pinimg.com/736x/20/41/ee/2041eedeac322b424aec89fd57c85396.jpg"  />
+src="https://i.pinimg.com/736x/20/41/ee/2041eedeac322b424aec89fd57c85396.jpg"  /> */}
   <section className='log'>
       <h1>
 <FaSignInAlt /> Login

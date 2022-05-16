@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function Sneak() {
   return (
-    <div></div>
+    <div>
+        <img className='sneakImg'
+        src="https://i.ibb.co/KzJmkCV/Anna-J.png" />
+    </div>
   )
 }

@@ -9,4 +9,4 @@ const mongoose = require("mongoose");
   { timestamps: true }
 )
 
-module.exports = mongoose.model("Blog", blogSchema);
+module.exports = blogSchema

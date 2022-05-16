@@ -1,9 +1,12 @@
 const Blog = ({ createBlog, text, saveText, photo, savePhoto }) => {
   return (
     <div className="Blog">
-      <h1> Your Safe Place </h1>
+      <img 
+className='homeImg'
+ />
       <form onSubmit={createBlog} className="postBox">
         <textarea
+        className="box"
           type="text"
           placeholder="Begin Here"
           value={text}
@@ -13,6 +16,7 @@ const Blog = ({ createBlog, text, saveText, photo, savePhoto }) => {
           required
         />
         <input
+     
           type="text"
           placeholder="Photo URL"
           value={photo}

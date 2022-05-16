@@ -26,6 +26,7 @@ function Login() {
  }
 
   return <>
+  
   <section className='log'>
       <h1>
 <FaSignInAlt /> Login
@@ -34,6 +35,7 @@ function Login() {
   </section>
    
   <section className='form'>
+    
         <form onSubmit={onSubmit}>
           <div className='form-group'>
             <input
@@ -45,6 +47,7 @@ function Login() {
               placeholder='Enter your Username'
               onChange={onChange}
             />
+            
           </div>
           <div className='form-group'>
             <input

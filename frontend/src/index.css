@@ -99,7 +99,7 @@ h1 {
 
 .form,
 .content {
-  width: 70%;
+  width: 20%;
   margin: 0 auto;
 }
 
@@ -274,4 +274,8 @@ h1 {
 
 .log {
   margin-left: 20%;
+}
+
+.loginImg {
+  
 }

@@ -6,7 +6,7 @@ import {
   FaHome,
   FaBook,
   FaTree,
-  FaLayerGroup
+  FaLayerGroup,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -14,37 +14,47 @@ function Header() {
   return (
     <header className="Header">
       <div className="logo">
-        <Link to="/blog">
-          <FaBook /> Post a Blog
-        </Link>
-        <Link to="/">
+
+      <Link className="home" to="/">
           <FaHome />
           Home
         </Link>
-      </div>
-      <ul>
+        <ul>
         <li>
-          <Link to="/login">
-            <FaSignInAlt /> Login
-          </Link>
+        <Link to="/blog">
+          <FaBook /> Post a Blog
+        </Link>
         </li>
-        <li>
-          <Link to="/register">
-            <FaUser /> Register
-          </Link>
-        </li>
-        <li>
-          <Link to="/about">
-            <FaTree /> About Us
-          </Link>
-        </li>
-        <li>
-          <Link to="/feed">
-            <FaLayerGroup /> Feed
+        
 
-          </Link>
-        </li>
-      </ul>
+        
+          <li>
+            <Link className="login" to="/login">
+              <FaSignInAlt /> Login
+            </Link>
+          </li>
+          <Link className="signout" to='/signout'>
+              <FaSignOutAlt /> Sign Out
+            </Link>
+          <li>
+            <Link className="register" to="/register">
+              <FaUser /> Register
+            </Link>
+          </li>
+          <li>
+            <Link className="about" to="/about">
+              <FaTree /> About Us
+            </Link>
+          </li>
+          <li>
+            <Link className="feed" to="/feed">
+              <FaLayerGroup /> Feed
+            </Link>
+
+            
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

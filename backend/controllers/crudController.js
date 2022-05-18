@@ -74,17 +74,37 @@ const deleteBlog = async (req, res) => {
 const createComment = async (req, res) => {
   try {
      let target = req.params.id
-    await Comment.create({
+   let comment = await Comment.create({
       user: req.body.user,
       blog_id: target,
       text: req.body.text,
     })
+    res.send(comment)
   } catch (e) {
     console.log(e)
     res.send('Oops! Something went wrong.')
   }
   
 }
+
+const findBlogComments = async (req, res) => {
+  try {
+   const blogComments = await Blog.find({
+     _id: req.params.blogs
+   })
+   res.send(blogComments)
+  } catch (e) {
+    console.log(e)
+    res.send("Oops! Something went wrong.")
+  }
+}
+
+
+
+
+
+
+
 
 
 module.exports = {
@@ -94,4 +114,6 @@ module.exports = {
   updateBlog,
   deleteBlog,
   getComments,
+  createComment,
+  findBlogComments
 }

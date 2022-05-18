@@ -39,7 +39,8 @@ app.get('/comments', crudController.getComments)
 //------------CREATE BLOGS----------------//
 
 app.post("/new",crudController.createBlog)
-// app.use('/api/users', require('./routes/userRoutes'))
+
+app.post('/new/comment', crudController.createComment)
 
 //------------POST BY ID----------------//
 

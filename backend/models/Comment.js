@@ -5,15 +5,13 @@ const mongoose = require("mongoose");
 const commentSchema = mongoose.Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
+      type: String, required: true,
     },
     text: {
       type: String,
       required: [true, "Please add text to your post"],
     },
-    review: { type: String, required: true },
+    blog_id: { type: Schema.Types.ObjectId, ref: "blog" },
   },
   {
     timestamps: true,

@@ -9,7 +9,7 @@ const main = async () => {
     })
   const blogs = [
     {
-      title: 'post',
+      title: 'things about me',
       author: user[0]._id,
       content: 'What a wonderful site',
     },

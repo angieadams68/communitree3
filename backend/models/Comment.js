@@ -1,6 +1,7 @@
 //// ADDING A COMMENT ////
 
 const mongoose = require("mongoose");
+const { Schema } = require('mongoose')
 
 const commentSchema = mongoose.Schema(
   {

@@ -28,11 +28,12 @@ app.use(errorHandler)
 
 ////// ROUTES //////
 
-app.get('/allblogs', crudController.getBlogs)
 
 //------------GET BLOGS----------------//
 
-// app.use('/api/blogs', blog)
+app.get('/allblogs', crudController.getBlogs)
+
+app.get('/comments', crudController.getComments)
 
 
 //------------CREATE BLOGS----------------//

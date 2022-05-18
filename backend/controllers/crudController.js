@@ -1,10 +1,18 @@
 const db = require('../db')
-const { Blog } = require('../models')
+const { Blog, Comment } = require('../models')
 
 const getBlogs = async (req, res) => {
   const blogs = await Blog.find()
   res.json(blogs)
 }
+
+const getComments = async (req, res) => {
+  const comments = await Comment.find()
+  res.json(comments)
+
+}
+
+
 
 const createBlog= async (req, res) => {
   try {
@@ -53,5 +61,6 @@ module.exports = {
   createBlog,
   getBlogById,
   updateBlog,
-  deleteBlog
+  deleteBlog,
+  getComments,
 }

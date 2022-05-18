@@ -12,15 +12,6 @@ const Feed = () => {
     console.log(res.data);
   };
 
-  const postBlog = async () => {
-    await axios({
-      url: `http://localhost:3001/api/new`, 
-      method: 'post',
-      data: {blogEntry}
-    })
-  }
-
-
 
   useEffect(() => {
     getBlogs();
@@ -35,9 +26,23 @@ const Feed = () => {
     setBlogEntry({ ...blogEntry, [e.target.name]: e.target.value });
   };
 
-  const handleSumbit = (e) => {
-    e.preventDefault()
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let blog = await axios.post(`http://localhost:3001/api/new`,{
+      title: blogEntry.title,
+      content: blogEntry.content,
+      author: "62853d70aa04fe015a2f88b6" ,
+    });
+    console.log(blog)
+  };
+
+  const handleClear = () => {
+    setBlogEntry({
+      title: "",
+      author: "62853d70aa04fe015a2f88b6",
+      content: "",
+    });
+  };
 
   return (
     <div className="Home">
@@ -51,9 +56,7 @@ const Feed = () => {
             </div>
           ))}
         <div>
-          <form 
-          onSubmit={() => {}}
-          >
+          <form onSubmit={() => {}}>
             <input
               onChange={handleChange}
               name="title"
@@ -70,8 +73,8 @@ const Feed = () => {
             />
           </form>
           <div>
-            <button type="submit"> Submit </button>
-            <button type="reset" > Clear </button>
+            <button type="submit" onClick={(e)=> handleSubmit(e) } > Submit </button>
+            <button type="reset" onClick={()=> handleClear() } > Clear </button>
           </div>
         </div>
       </main>

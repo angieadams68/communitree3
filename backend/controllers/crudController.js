@@ -89,8 +89,8 @@ const createComment = async (req, res) => {
 
 const findBlogComments = async (req, res) => {
   try {
-   const blogComments = await Blog.find({
-     _id: req.params.blogs
+   const blogComments = await Comment.find({
+     blog_id: req.params.blog
    })
    res.send(blogComments)
   } catch (e) {
@@ -98,8 +98,6 @@ const findBlogComments = async (req, res) => {
     res.send("Oops! Something went wrong.")
   }
 }
-
-
 
 
 

@@ -40,7 +40,20 @@ const getBlogById = async (req, res) => {
 
 const updateBlog = async (req, res) => {
   try {
-    const blog = await Blog.findOneAndUpdate()
+    let target = req.params.id
+    const blog = await Blog.findOneAndUpdate(
+      {_id: target }, 
+      { $set: 
+        {
+          title: req.body.title,
+          author: '62853d70aa04fe015a2f88b6',
+          content: req.body.content 
+        }
+       },
+      {
+        new: true
+      }
+    )
     res.json(blog)
   } catch (e) {
     console.log(e)

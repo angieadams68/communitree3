@@ -20,7 +20,7 @@ function Header() {
         <Link className="blogy"to="/blog"><FaBook /> Post a Blog </Link>
         <Link className="feed" to="/feed"><FaLayerGroup /> Feed </Link>
         <Link className="about" to="/about"><FaTree /> About Us </Link>
-        <Link classname="sneak" to='/sneak'><FaImages /> Site Sneak Peek </Link>
+        <Link className="sneak" to='/sneak'><FaImages /> Site Sneak Peek </Link>
         <Link className="help" to='/counseling'><FaHeart /> Counseling </Link>
         <Link className="register" to="/register"><FaUser /> Register </Link>
         <Link className="login" to="/login"><FaSignInAlt /> Login </Link>

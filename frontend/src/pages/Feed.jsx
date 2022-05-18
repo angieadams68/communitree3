@@ -1,78 +1,82 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Article from '../components/Article'
-import Blog from '../components/Blog'
-
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Blog from "../components/Blog";
 
 const Feed = () => {
-  const [blogPost, setBlogPost] = useState({
-    title: '',
-    author: '',
-    content: ''
-  })
-  const [articles, setArticles] = useState([])
-  const [clicked, toggleClick] = useState(false)
-  let navigate = useNavigate()
+  const [blogs, setBlogs] = useState();
+
+  const getBlogs = async () => {
+    const res = await axios.get("http://localhost:3001/api/allblogs");
+    setBlogs(res.data);
+    console.log(res.data);
+  };
+
+  const postBlog = async () => {
+    await axios({
+      url: `http://localhost:3001/api/new`, 
+      method: 'post',
+      data: {blogEntry}
+    })
+  }
+
+
 
   useEffect(() => {
-    const renderArticles = async () => {
-      let database = await axios.get('/allblogs')
-      console.log(database)
-      setArticles(database.data)
-    }
-    renderArticles()
-  }, [])
+    getBlogs();
+  }, []);
 
-  const createNew = (e) => {
-    toggleClick(!clicked)
-  }
+  const [blogEntry, setBlogEntry] = useState({
+    title: "",
+    author: "62853d70aa04fe015a2f88b6",
+    content: "",
+  });
+  const handleChange = (e) => {
+    setBlogEntry({ ...blogEntry, [e.target.name]: e.target.value });
+  };
 
-  const saveContent = (e) => {
-    const Blog = {
-      ...blogPost,
-      [e.target.name]: e.target.value
-    }
-    setBlogPost(Blog)
-  }
-
-  const submitPost = async (e) => {
+  const handleSumbit = (e) => {
     e.preventDefault()
-    await axios.post('/new', blogPost)
-    setBlogPost({
-      title: '',
-      author: '',
-      content: ''
-    })
-    navigate('/post/your')
   }
 
   return (
     <div className="Home">
-      
       <main>
-        {!clicked ? (
-          !!articles.length &&
-          articles.map((article) => (
-            <Article
-              key={article._id}
-              objectID={article._id}
-              title={article.title}
-              author={article.author}
-              content={article.content}
+        {blogs &&
+          blogs.map((blog) => (
+            <div key={blog._id}>
+              <h2>{blog.title}</h2>
+              <h4>Author: {blog.author}</h4>
+              <p>{blog.content}</p>
+            </div>
+          ))}
+        <div>
+          <form 
+          onSubmit={() => {}}
+          >
+            <input
+              onChange={handleChange}
+              name="title"
+              type="text"
+              placeholder="title"
+              value={blogEntry.title}
             />
-          ))
-        ) : (
-          <Blog
-            blogPost={blogPost}
-            saveContent={saveContent}
-            submitPost={submitPost}
-          />
-        )}
+            <textarea
+              onChange={handleChange}
+              name="content"
+              type="text"
+              placeholder="content"
+              value={blogEntry.content}
+            />
+          </form>
+          <div>
+            <button type="submit"> Submit </button>
+            <button type="reset" > Clear </button>
+          </div>
+        </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Feed
+export default Feed;

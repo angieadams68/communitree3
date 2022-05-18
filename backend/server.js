@@ -10,7 +10,7 @@ const crudController = require('./controllers/crudController')
 
 
 /////// DEFINE VARIABLES ////////
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3001;
 const app = express();
 
 
@@ -31,30 +31,30 @@ app.use(errorHandler)
 
 //------------GET BLOGS----------------//
 
-app.get('/allblogs', crudController.getBlogs)
+app.get('/api/allblogs', crudController.getBlogs)
 
-app.get('/comments', crudController.getComments)
+app.get('/api/comments', crudController.getComments)
 
 
 //------------CREATE BLOGS----------------//
 
-app.post("/new",crudController.createBlog)
+app.post("/api/new",crudController.createBlog)
 
-app.post('/new/comment/:id', crudController.createComment)
-app.get('/comments/:blog', crudController.findBlogComments)
+app.post('/api/new/comment/:id', crudController.createComment)
+app.get('/api/comments/:blog', crudController.findBlogComments)
 
 
 //------------POST BY ID----------------//
 
-app.get("/blog/:id", crudController.getBlogById)
+app.get("/api/blog/:id", crudController.getBlogById)
 
 //------------UPDATE BLOGS----------------//
 
-app.put('/posts/:id',crudController.updateBlog)
+app.put('/api/posts/:id',crudController.updateBlog)
 
 //------------DELETE BLOGS----------------//
 
-app.delete('/delete/posts/:id',crudController.deleteBlog)
+app.delete('/api/delete/posts/:id',crudController.deleteBlog)
 
 //////// PORT LISTENING ////////
 app.listen(port, () => console.log(`Server started on port ${port}`));

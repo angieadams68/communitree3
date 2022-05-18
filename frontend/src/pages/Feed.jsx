@@ -44,13 +44,18 @@ const Feed = () => {
     });
   };
 
+  const deleteEntry = async (post) => {
+    await axios.delete(`http://localhost:3001/api/delete/posts/${post}`)
+  
+  }
+
   return (
     <div className="Home">
       <main>
         {blogs &&
           blogs.map((blog) => (
             <div key={blog._id}>
-              <h2>{blog.title}</h2>
+              <h2>{blog.title} <button onClick={() => deleteEntry(blog._id) } > x </button> </h2>
               <h4>Author: {blog.author}</h4>
               <p>{blog.content}</p>
             </div>

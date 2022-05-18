@@ -16,7 +16,11 @@ const getComments = async (req, res) => {
 
 const createBlog= async (req, res) => {
   try {
-    const storedBlog= await Blog.create(req.body)
+    const storedBlog= await Blog.create({
+      title: req.body.title,
+      author: '62853d70aa04fe015a2f88b6',
+      content: req.body.content,
+    })
     res.json(storedBlog)
   } catch (e) {
     console.log(e)
@@ -36,9 +40,7 @@ const getBlogById = async (req, res) => {
 
 const updateBlog = async (req, res) => {
   try {
-    const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
-    })
+    const blog = await Blog.findOneAndUpdate()
     res.json(blog)
   } catch (e) {
     console.log(e)

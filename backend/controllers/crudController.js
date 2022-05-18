@@ -71,6 +71,22 @@ const deleteBlog = async (req, res) => {
   }
 }
 
+const createComment = async (req, res) => {
+  try {
+     let target = req.params.id
+    await Comment.create({
+      user: req.body.user,
+      blog_id: target,
+      text: req.body.text,
+    })
+  } catch (e) {
+    console.log(e)
+    res.send('Oops! Something went wrong.')
+  }
+  
+}
+
+
 module.exports = {
   getBlogs,
   createBlog,

@@ -40,7 +40,8 @@ app.get('/comments', crudController.getComments)
 
 app.post("/new",crudController.createBlog)
 
-app.post('/new/comment', crudController.createComment)
+app.post('/new/comment/:id', crudController.createComment)
+
 
 //------------POST BY ID----------------//
 

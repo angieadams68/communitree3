@@ -1,7 +1,4 @@
-
-
 const mongoose = require("mongoose");
-
 
 const userSchema = mongoose.Schema(
   {
@@ -30,4 +27,4 @@ const userSchema = mongoose.Schema(
   }
 );
 
-module.exports =  userSchema
+module.exports = userSchema;

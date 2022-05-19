@@ -286,3 +286,9 @@ h1 {
 .captionlogin {
   margin-left: 20%;
 }
+
+.blogform {
+     border: 1px solid black;
+  margin-top: 50px;
+  text-align: center;
+}

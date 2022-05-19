@@ -1,10 +1,9 @@
 const Blog = ({ createBlog, text, saveText, photo, savePhoto }) => {
   return (
     <div className="Blog">
-      
       <form onSubmit={createBlog} className="postBox">
         <textarea
-        className="box"
+          className="box"
           type="text"
           placeholder="Begin Here"
           value={text}
@@ -14,7 +13,6 @@ const Blog = ({ createBlog, text, saveText, photo, savePhoto }) => {
           required
         />
         <input
-     
           type="text"
           placeholder="Photo URL"
           value={photo}

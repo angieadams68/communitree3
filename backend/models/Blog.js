@@ -1,13 +1,13 @@
-const { Schema } = require('mongoose')
+const { Schema } = require("mongoose");
 const mongoose = require("mongoose");
- const blogSchema = mongoose.Schema(
+const blogSchema = mongoose.Schema(
   {
     title: { type: String, required: true },
-    author: { type: Schema.Types.ObjectId, ref: 'User' },
+    author: { type: Schema.Types.ObjectId, ref: "User" },
     content: { type: String, required: true },
-    comment: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+    comment: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   },
   { timestamps: true }
-)
+);
 
-module.exports = blogSchema
+module.exports = blogSchema;

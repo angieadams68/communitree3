@@ -1,127 +1,82 @@
-import React from 'react'
-import {useState, useEffect} from 'react'
-import {FaSignInAlt} from 'react-icons/fa'
-
+import React from "react";
+import { useState, useEffect } from "react";
+import { FaSignInAlt } from "react-icons/fa";
 
 //////////// COMPONENT FUNCTION ////////////////
 
 function Login() {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-      })
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
 
- const { username, password } = formData
+  const { username, password } = formData;
 
- ///////////// DATA CHANGES /////////////////
- const onChange = (e) => {
+  ///////////// DATA CHANGES /////////////////
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
- const onSubmit = (e) => {
-     e.preventDefault()
- }
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
-  return <>
-  <div className='pic'>
-  {/* <img 
-className='homeImg'
-src="https://i.pinimg.com/736x/20/41/ee/2041eedeac322b424aec89fd57c85396.jpg"  /> */}
-  <section className='log'>
-      <h1>
-<FaSignInAlt /> Login
-      </h1>
-      <p className='captionlogin'> SO excited to see you again!</p>
-  </section>
-   
-  <section className='form'>
-    
-        <form onSubmit={onSubmit}>
-          <div className='form-group'>
-            <input
-              type='username'
-              className='form-control'
-              id='username'
-              name='username'
-              value={username}
-              placeholder='Enter your Username'
-              onChange={onChange}
-            />
-            
-          </div>
-          <div className='form-group'>
-            <input
-              type='password'
-              className='form-control'
-              id='password'
-              name='password'
-              value={password}
-              placeholder='Enter password'
-              onChange={onChange}
-            />
-          </div>
+  return (
+    <>
+      <div className="pic">
+        <section className="log">
+          <h1>
+            <FaSignInAlt /> Login
+          </h1>
+          <p className="captionlogin"> SO excited to see you again!</p>
+        </section>
 
-           <div className='form-group'>
-            <button type='submit' className='btn btn-block'>
-              Click Me! Welcome Back!
-            </button>
+        <section className="form">
+          <form onSubmit={onSubmit}>
+            <div className="form-group">
+              <input
+                type="username"
+                className="form-control"
+                id="username"
+                name="username"
+                value={username}
+                placeholder="Enter your Username"
+                onChange={onChange}
+              />
             </div>
-  
-       </form>
-   </section>
-   </div>
-  </>
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Enter password"
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <button type="submit" className="btn btn-block">
+                Click Me! Welcome Back!
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </>
+  );
 }
-export default Login
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Login;
 
 ///////////////////////////// BEFORE UDEMY /////////////////////////////
 
 // function Login() {
 //     const { dispatch } = useContext(Context);
-  
+
 //     const handleSubmit = async (e) => {
 //       e.preventDefault();
 //       dispatch({ type: "LOGIN_START" });
@@ -135,7 +90,7 @@ export default Login
 //         dispatch({ type: "LOGIN_FAIL" });
 //       }
 //     };
-  
+
 //     return (
 //       <div className="login">
 //         <span className="loginName">Login</span>
@@ -164,6 +119,5 @@ export default Login
 //       </div>
 //     );
 //   }
-  
+
 //   export default Login;
-  

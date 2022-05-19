@@ -1,29 +1,27 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Blog from "../components/Blog";
+
 
 const Feed = () => {
   const [blogs, setBlogs] = useState();
   const [edit, setEdit] = useState(false);
   const [targetEntry, setTargetEntry] = useState();
-  const [change, setChange] = useState(false)
+  const [change, setChange] = useState(false);
   const [comment, setComment] = useState({
-    user: '',
-    text: '',
-  })
-  const [target, setTarget] = useState()
-  const [commentOpen, setCommentOpen] = useState(false)
- 
-const postComment = async () => {
-await axios.post(`http://localhost:3001/api/new/comment/${target}`, {
-  user: comment.user,
-  text: comment.text
-})
-setChange(true)
-setCommentOpen(false)
-}
+    user: "",
+    text: "",
+  });
+  const [target, setTarget] = useState();
+  const [commentOpen, setCommentOpen] = useState(false);
 
+  const postComment = async () => {
+    await axios.post(`http://localhost:3001/api/new/comment/${target}`, {
+      user: comment.user,
+      text: comment.text,
+    });
+    setChange(true);
+    setCommentOpen(false);
+  };
 
   const getBlogs = async () => {
     const res = await axios.get("http://localhost:3001/api/allblogs");
@@ -31,21 +29,13 @@ setCommentOpen(false)
     console.log(res.data);
   };
 
-  // const getComments = async () => {
-  //   const res = await axios.get(`http://localhost:3001/api/comments/${target}`);
-  //   setComments(res.data);
-  //   console.log(res.data);
-  // };
-
-
   useEffect(() => {
     getBlogs();
   }, []);
   useEffect(() => {
     getBlogs();
-    setChange(false)
+    setChange(false);
   }, [change]);
-  
 
   const [blogEntry, setBlogEntry] = useState({
     title: "",
@@ -60,15 +50,9 @@ setCommentOpen(false)
     }
   };
 
-
   const handleComment = (e) => {
-      setComment({ ...comment, [e.target.name]: e.target.value });
-    
+    setComment({ ...comment, [e.target.name]: e.target.value });
   };
-
-
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,8 +70,8 @@ setCommentOpen(false)
         author: "62853d70aa04fe015a2f88b6",
       });
     }
-    setEdit(false)
-    setChange(true) 
+    setEdit(false);
+    setChange(true);
     setBlogEntry({
       title: "",
       author: "62853d70aa04fe015a2f88b6",
@@ -111,7 +95,7 @@ setCommentOpen(false)
 
   const deleteEntry = async (post) => {
     await axios.delete(`http://localhost:3001/api/delete/posts/${post}`);
-    setChange(true)
+    setChange(true);
   };
 
   return (
@@ -124,29 +108,35 @@ setCommentOpen(false)
                 {blog.title}{" "}
                 <button onClick={() => deleteEntry(blog._id)}> x </button>{" "}
               </h4>
-              <button onClick={() => {
-                setEdit(true)
-                setTargetEntry(blog)}}> Edit </button>
-                <button onClick={() => {
-                setTarget(blog._id)
-                setCommentOpen(true)
-                }}> Enter a Comment </button>
+              <button
+                onClick={() => {
+                  setEdit(true);
+                  setTargetEntry(blog);
+                }}
+              >
+                {" "}
+                Edit{" "}
+              </button>
+              <button
+                onClick={() => {
+                  setTarget(blog._id);
+                  setCommentOpen(true);
+                }}
+              >
+                {" "}
+                Enter a Comment{" "}
+              </button>
               <p>{blog.content}</p>
               <div className="comments">
-                {
-                 blogs && blog.comment.map((comment)=>(
-                    <div className="commentItem" key={comment._id}> 
-                    <h5> {comment.user} </h5>
-                    <p> {comment.text} </p>
-                    
-                     </div>
-                  ))
-                }
-              
-        <div className="commentbox">
+                {blogs &&
+                  blog.comment.map((comment) => (
+                    <div className="commentItem" key={comment._id}>
+                      <h5> {comment.user} </h5>
+                      <p> {comment.text} </p>
+                    </div>
+                  ))}
 
-        </div>
-
+                <div className="commentbox"></div>
               </div>
             </div>
           ))}
@@ -178,9 +168,8 @@ setCommentOpen(false)
               Clear{" "}
             </button>
           </div>
-          {
-            commentOpen ? (
-              <div>
+          {commentOpen ? (
+            <div>
               <h2> Comment Entry </h2>
               <form onSubmit={() => {}}>
                 <input
@@ -197,20 +186,20 @@ setCommentOpen(false)
                   placeholder="text"
                   value={comment.text}
                 />
-                
               </form>
               <button type="submit" onClick={(e) => postComment(e)}>
-                  {" "}
-                  Enter Comment{" "}
-                </button>
-                <button type="reset" onClick={() => handleCommentClear()}> Clear </button>
+                {" "}
+                Enter Comment{" "}
+              </button>
+              <button type="reset" onClick={() => handleCommentClear()}>
+                {" "}
+                Clear{" "}
+              </button>
             </div>
-            ) : (
-              <div> </div>
-            )
-          }
+          ) : (
+            <div> </div>
+          )}
         </div>
-        
       </main>
     </div>
   );

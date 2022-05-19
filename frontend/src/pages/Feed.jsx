@@ -8,9 +8,21 @@ const Feed = () => {
   const [edit, setEdit] = useState(false);
   const [targetEntry, setTargetEntry] = useState();
   const [change, setChange] = useState(false)
-  const [comments, setComments] = useState()
+  const [comment, setComment] = useState({
+    user: '',
+    text: '',
+  })
   const [target, setTarget] = useState()
-
+  const [commentOpen, setCommentOpen] = useState(false)
+ 
+const postComment = async () => {
+await axios.post(`http://localhost:3001/api/new/comment/${target}`, {
+  user: comment.user,
+  text: comment.text
+})
+setChange(true)
+setCommentOpen(false)
+}
 
 
   const getBlogs = async () => {
@@ -19,11 +31,11 @@ const Feed = () => {
     console.log(res.data);
   };
 
-  const getComments = async () => {
-    const res = await axios.get(`http://localhost:3001/api/comments/${target}`);
-    setComments(res.data);
-    console.log(res.data);
-  };
+  // const getComments = async () => {
+  //   const res = await axios.get(`http://localhost:3001/api/comments/${target}`);
+  //   setComments(res.data);
+  //   console.log(res.data);
+  // };
 
 
   useEffect(() => {
@@ -33,9 +45,7 @@ const Feed = () => {
     getBlogs();
     setChange(false)
   }, [change]);
-  useEffect(() => {
-    getComments();
-  }, [target]);
+  
 
   const [blogEntry, setBlogEntry] = useState({
     title: "",
@@ -49,6 +59,16 @@ const Feed = () => {
       setBlogEntry({ ...blogEntry, [e.target.name]: e.target.value });
     }
   };
+
+
+  const handleComment = (e) => {
+      setComment({ ...comment, [e.target.name]: e.target.value });
+    
+  };
+
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,6 +102,12 @@ const Feed = () => {
       content: "",
     });
   };
+  const handleCommentClear = () => {
+    setBlogEntry({
+      user: "",
+      text: "",
+    });
+  };
 
   const deleteEntry = async (post) => {
     await axios.delete(`http://localhost:3001/api/delete/posts/${post}`);
@@ -101,11 +127,14 @@ const Feed = () => {
               <button onClick={() => {
                 setEdit(true)
                 setTargetEntry(blog)}}> Edit </button>
+                <button onClick={() => {
+                setTarget(blog._id)
+                setCommentOpen(true)
+                }}> Enter a Comment </button>
               <p>{blog.content}</p>
               <div className="comments">
-                <button onClick={()=> setTarget(blog._id)}> Get Comments </button>
                 {
-                  target && comments && comments.map((comment)=>(
+                 blogs && blog.comment.map((comment)=>(
                     <div className="commentItem" key={comment._id}> 
                     <h5> {comment.user} </h5>
                     <p> {comment.text} </p>
@@ -113,25 +142,7 @@ const Feed = () => {
                      </div>
                   ))
                 }
-              <div>
-          <h2> Comment Entry </h2>
-          <form onSubmit={() => {}}>
-            <input
-              onChange={handleChange}
-              name="title"
-              type="text"
-              placeholder="title"
-              value={blogEntry.title}
-            />
-            <textarea
-              onChange={handleChange}
-              name="content"
-              type="text"
-              placeholder="content"
-              value={blogEntry.content}
-            />
-          </form>
-        </div>
+              
         <div className="commentbox">
 
         </div>
@@ -167,6 +178,37 @@ const Feed = () => {
               Clear{" "}
             </button>
           </div>
+          {
+            commentOpen ? (
+              <div>
+              <h2> Comment Entry </h2>
+              <form onSubmit={() => {}}>
+                <input
+                  onChange={handleComment}
+                  name="user"
+                  type="text"
+                  placeholder="user"
+                  value={comment.user}
+                />
+                <textarea
+                  onChange={handleComment}
+                  name="text"
+                  type="text"
+                  placeholder="text"
+                  value={comment.text}
+                />
+                
+              </form>
+              <button type="submit" onClick={(e) => postComment(e)}>
+                  {" "}
+                  Enter Comment{" "}
+                </button>
+                <button type="reset" onClick={() => handleCommentClear()}> Clear </button>
+            </div>
+            ) : (
+              <div> </div>
+            )
+          }
         </div>
         
       </main>

@@ -77,5 +77,17 @@ What does CRUD mean? You can post your story (or tips for conceiving/coping) You
 
 ***
 
+### ****Home Page****
+![Home Page](https://i.imgur.com/jwC7NlF.png[/img])
+
+
+### ****Feed**** 
+
+![Feed Page](https://i.imgur.com/N5t1SOV.png[/img])
+
+
+
+***
+
 ### **CHECK OUT MORE ON [TRELLO](https://trello.com/b/DXTt7wAv/communitree)**
 

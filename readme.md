@@ -68,6 +68,7 @@ What does CRUD mean? You can post your story (or tips for conceiving/coping) You
 ***
 
 ## POST MVP:
+* FINISH CSS ON ALL PAGES! Must focus on Post-Grad requirements first.
 * Login or Register
 * Font hyperlink clicks for Login or Register instead of Buttons.
 * Socket.IO

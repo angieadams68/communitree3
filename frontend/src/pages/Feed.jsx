@@ -5,12 +5,21 @@ import Blog from "../components/Blog";
 
 const Feed = () => {
   const [blogs, setBlogs] = useState();
+  const [edit, setEdit] = useState(false)
+  const [targetEntry, setTargetEntry] = useState()
 
   const getBlogs = async () => {
     const res = await axios.get("http://localhost:3001/api/allblogs");
     setBlogs(res.data);
     console.log(res.data);
   };
+
+
+  const editBlog = async () => {
+    const res = await axios.put("http://localhost:3001/api/allblogs")
+  }
+
+
 
 
   useEffect(() => {
@@ -23,8 +32,16 @@ const Feed = () => {
     content: "",
   });
   const handleChange = (e) => {
-    setBlogEntry({ ...blogEntry, [e.target.name]: e.target.value });
+   
+    if (edit) {
+      setBlogEntry({ ...targetEntry, [e.target.name]: e.target.value });
+    } else {
+      setBlogEntry({ ...blogEntry, [e.target.name]: e.target.value });
+    }
+    
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +73,7 @@ const Feed = () => {
           blogs.map((blog) => (
             <div key={blog._id}>
               <h2>{blog.title} <button onClick={() => deleteEntry(blog._id) } > x </button> </h2>
+              <button onClick={()=> setTargetEntry(blog._id) }> Select </button>
               <h4>Author: {blog.author}</h4>
               <p>{blog.content}</p>
             </div>
@@ -80,6 +98,7 @@ const Feed = () => {
           <div>
             <button type="submit" onClick={(e)=> handleSubmit(e) } > Submit </button>
             <button type="reset" onClick={()=> handleClear() } > Clear </button>
+
           </div>
         </div>
       </main>

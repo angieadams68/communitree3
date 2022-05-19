@@ -35,21 +35,9 @@ What does CRUD mean? You can post your story (or tips for conceiving/coping) You
 
 #### MVP:
 
-### Welcome Page:
-* Button to login & sign-up
-* Login form
-* Register form
-
-
-### User Profile:
-  * First Name
-  * Last Name
-  * Username
-  * Email
-  * Password
 
   ### CRUD:
-  * Your story (Post)
+  * Your story (Title)
   * Comment on a post.
   * Update a post.
   * Delete a post.
@@ -60,33 +48,32 @@ What does CRUD mean? You can post your story (or tips for conceiving/coping) You
 * Post food, workout and drinks that help you with your process of conceiving.
 * Post your story of conceiving or a loss.
 
-### BLOG, ABOUT US, COUNSEL (Links)
+### BLOG, ABOUT US (Links)
 * Blog will have small stories as an example of what an account with Communitree would be like.
 * About us will have an about me of the creator, her struggle and her reasoning.
-* Counsel will be free links to website for therapy, group counseling.
+
 
 ***
 
-## ***Technologies***
+## ***Technologies Used***
  * HTML
  * CSS
  * Flexbox
  * Javascript
  * React
- * Redux
  * MERN 
  * Mongoose
- * JWT AUTH
- * Deployed on Heroku
+ 
 
 ***
 
 ## POST MVP:
+* Login or Register
+* Font hyperlink clicks for Login or Register instead of Buttons.
 * Socket.IO
-* Counseling Page
 * Follow us on- Page
-* Update comments.
 * Like button.
+ * Counsel page - will be free links to website for therapy, group counseling.
 
 ***
 

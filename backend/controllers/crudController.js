@@ -2,7 +2,7 @@ const db = require('../db')
 const { Blog, Comment } = require('../models')
 
 const getBlogs = async (req, res) => {
-  const blogs = await Blog.find()
+  const blogs = await Blog.find({}).populate('comment')
   res.json(blogs)
 }
 
@@ -76,10 +76,13 @@ const createComment = async (req, res) => {
      let target = req.params.id
    let comment = await Comment.create({
       user: req.body.user,
-      blog_id: target,
       text: req.body.text,
     })
-    res.send(comment)
+    await comment.save()
+    const blog = await Blog.findById(target)
+    blog.comment.push(comment)
+    await blog.save()
+    return res.status(200).json({comment})
   } catch (e) {
     console.log(e)
     res.send('Oops! Something went wrong.')

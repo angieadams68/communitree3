@@ -12,7 +12,7 @@ const commentSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add text to your post"],
     },
-    blog_id: { type: Schema.Types.ObjectId, ref: "blog" },
+    
   },
   {
     timestamps: true,

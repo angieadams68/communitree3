@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
   {
     title: { type: String, required: true },
     author: { type: Schema.Types.ObjectId, ref: 'User' },
-    content: { type: String, required: true }
+    content: { type: String, required: true },
+    comment: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
   },
   { timestamps: true }
 )

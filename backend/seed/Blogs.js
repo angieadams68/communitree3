@@ -12,6 +12,7 @@ const main = async () => {
       title: 'things about me',
       author: user[0]._id,
       content: 'What a wonderful site',
+      comment: []
     },
     {
       title: 'post',

@@ -14,6 +14,7 @@ import Counseling from './pages/Counseling';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Feed from './pages/Feed'
+import './App.css'
 
 
 function App() {

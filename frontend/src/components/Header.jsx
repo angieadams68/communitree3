@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className="Header">
-      <div className="logo">
+      <div className="headerr">
         <Link className="home" to="/"><FaHome /> Home </Link>
         <Link className="blogy"to="/blog"><FaBook /> Post a Blog </Link>
         <Link className="feed" to="/feed"><FaLayerGroup /> Feed </Link>

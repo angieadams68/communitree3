@@ -7,12 +7,21 @@ const Feed = () => {
   const [blogs, setBlogs] = useState();
   const [edit, setEdit] = useState(false);
   const [targetEntry, setTargetEntry] = useState();
-const [change, setChange] = useState(false)
+  const [change, setChange] = useState(false)
+  const [comments, setComments] = useState()
+  const [target, setTarget] = useState()
+
 
 
   const getBlogs = async () => {
     const res = await axios.get("http://localhost:3001/api/allblogs");
     setBlogs(res.data);
+    console.log(res.data);
+  };
+
+  const getComments = async () => {
+    const res = await axios.get(`http://localhost:3001/api/comments/${target}`);
+    setComments(res.data);
     console.log(res.data);
   };
 
@@ -24,6 +33,9 @@ const [change, setChange] = useState(false)
     getBlogs();
     setChange(false)
   }, [change]);
+  useEffect(() => {
+    getComments();
+  }, [target]);
 
   const [blogEntry, setBlogEntry] = useState({
     title: "",
@@ -82,21 +94,53 @@ const [change, setChange] = useState(false)
         {blogs &&
           blogs.map((blog) => (
             <div className="boxform" key={blog._id}>
-              <h2>
+              <h4>
                 {blog.title}{" "}
                 <button onClick={() => deleteEntry(blog._id)}> x </button>{" "}
-              </h2>
+              </h4>
               <button onClick={() => {
                 setEdit(true)
                 setTargetEntry(blog)}}> Edit </button>
               <p>{blog.content}</p>
               <div className="comments">
-                
+                <button onClick={()=> setTarget(blog._id)}> Get Comments </button>
+                {
+                  target && comments && comments.map((comment)=>(
+                    <div className="commentItem" key={comment._id}> 
+                    <h5> {comment.user} </h5>
+                    <p> {comment.text} </p>
+                    
+                     </div>
+                  ))
+                }
+              <div>
+          <h2> Comment Entry </h2>
+          <form onSubmit={() => {}}>
+            <input
+              onChange={handleChange}
+              name="title"
+              type="text"
+              placeholder="title"
+              value={blogEntry.title}
+            />
+            <textarea
+              onChange={handleChange}
+              name="content"
+              type="text"
+              placeholder="content"
+              value={blogEntry.content}
+            />
+          </form>
+        </div>
+        <div className="commentbox">
+
+        </div>
 
               </div>
             </div>
           ))}
         <div>
+          <h2> Blog Form </h2>
           <form onSubmit={() => {}}>
             <input
               onChange={handleChange}
@@ -124,6 +168,7 @@ const [change, setChange] = useState(false)
             </button>
           </div>
         </div>
+        
       </main>
     </div>
   );
